@@ -1,5 +1,5 @@
 import { User } from "@/types/user";
-import fetchData from "@lib/fetchData";
+import { apiPost } from "../api-helpers";
 
 export interface LoginReq {
   email: string;
@@ -13,17 +13,9 @@ export interface LoginRes {
 }
 
 const signin = async (body: LoginReq): Promise<LoginRes> => {
-  const response = await fetchData("/api/v1/auth/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(body),
+  return apiPost("/api/v1/auth/login", body, {
+    credentials: "include",
   });
-
-  const data = response.json();
-
-  return data;
 };
 
 export default signin;

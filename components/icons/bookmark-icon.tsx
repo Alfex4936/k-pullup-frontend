@@ -1,4 +1,4 @@
-import { type IconProps, iconColorMap } from "./home-icon";
+import BaseIcon, { type IconProps, iconColorMap } from "./base-icon";
 import cn from "@lib/cn";
 
 const BookmarkIcon = ({

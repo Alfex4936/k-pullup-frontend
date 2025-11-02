@@ -1,4 +1,4 @@
-import { type IconProps, iconStorkeColorMap } from "./home-icon";
+import { type IconProps, iconStrokeColorMap } from "./base-icon";
 import cn from "@lib/cn";
 
 const EditIcon = ({ size = 25, color = "primary", className }: IconProps) => {
@@ -15,7 +15,7 @@ const EditIcon = ({ size = 25, color = "primary", className }: IconProps) => {
       xmlns="http://www.w3.org/2000/svg"
       className={cn(
         "dark:fill-grey-light",
-        iconStorkeColorMap[color],
+        iconStrokeColorMap[color],
         className
       )}
     >
