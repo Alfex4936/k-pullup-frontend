@@ -13,9 +13,7 @@ export interface LoginRes {
 }
 
 const signin = async (body: LoginReq): Promise<LoginRes> => {
-  return apiPost("/api/v1/auth/login", body, {
-    credentials: "include",
-  });
+  return apiPost("/api/v1/auth/login", body);
 };
 
 export default signin;

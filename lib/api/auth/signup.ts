@@ -12,9 +12,7 @@ export interface SigninRes extends Omit<User, "username"> {
 }
 
 const signup = async (body: SigninReq) => {
-  return apiPostResponse(`/api/v1/auth/signup`, body, {
-    credentials: "include",
-  });
+  return apiPostResponse(`/api/v1/auth/signup`, body);
 };
 
 export default signup;

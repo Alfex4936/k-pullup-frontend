@@ -8,13 +8,15 @@ const getAuthOptions = (): RequestInit => ({
 });
 
 /**
- * Helper for GET requests
+ * Helper for GET requests with authentication
+ * Throws an error if the response is not ok
  */
 export const apiGet = async <T>(
   url: string,
   options: RequestInit = {}
 ): Promise<T> => {
   const response = await fetchData(url, {
+    ...getAuthOptions(),
     ...options,
     method: "GET",
   });
@@ -28,12 +30,14 @@ export const apiGet = async <T>(
 
 /**
  * Helper for GET requests that return Response directly
+ * Includes authentication credentials by default
  */
 export const apiGetResponse = async (
   url: string,
   options: RequestInit = {}
 ): Promise<Response> => {
   return fetchData(url, {
+    ...getAuthOptions(),
     ...options,
     method: "GET",
   });
@@ -41,6 +45,7 @@ export const apiGetResponse = async (
 
 /**
  * Helper for POST requests with JSON body
+ * Throws an error if the response is not ok
  */
 export const apiPost = async <T, R = any>(
   url: string,
@@ -57,6 +62,10 @@ export const apiPost = async <T, R = any>(
     },
     body: body ? JSON.stringify(body) : undefined,
   });
+
+  if (!response.ok) {
+    throw new Error(`API POST request failed: ${response.statusText}`);
+  }
 
   return response.json();
 };
