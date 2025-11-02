@@ -1,12 +1,7 @@
-import fetchData from "@lib/fetchData";
+import { apiDelete } from "../api-helpers";
 
 const deleteUser = async () => {
-  const response = await fetchData(`/api/v1/users/me`, {
-    method: "DELETE",
-    credentials: "include",
-  });
-
-  return response;
+  return apiDelete("/api/v1/users/me");
 };
 
 export default deleteUser;

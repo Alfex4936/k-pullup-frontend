@@ -1,4 +1,4 @@
-import fetchData from "@lib/fetchData";
+import { apiGet } from "../api-helpers";
 
 interface Props {
   lat: number;
@@ -34,13 +34,9 @@ const closeMarker = async ({
   pageSize = 10,
   pageParam,
 }: Props): Promise<CloseMarkerRes> => {
-  const response = await fetchData(
+  return apiGet(
     `/api/v1/markers/close?latitude=${lat}&longitude=${lng}&distance=${distance}&n=${pageSize}&page=${pageParam}&pageSize=10`
   );
-
-  const data = response.json();
-
-  return data;
 };
 
 export default closeMarker;

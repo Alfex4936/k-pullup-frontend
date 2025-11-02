@@ -1,4 +1,4 @@
-import { type IconProps, iconColorMap } from "./home-icon";
+import { type IconProps, iconColorMap } from "./base-icon";
 import cn from "@lib/cn";
 
 const ChatBubbleIcon = ({

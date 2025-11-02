@@ -1,13 +1,9 @@
-import fetchData from "@lib/fetchData";
+import { apiDelete } from "../api-helpers";
 
 const deleteComment = async (id: number) => {
-  const response = await fetchData(`/api/v1/comments/${id}`, {
-    method: "delete",
-    credentials: "include",
+  return apiDelete(`/api/v1/comments/${id}`, {
     cache: "no-store",
   });
-
-  return response;
 };
 
 export default deleteComment;

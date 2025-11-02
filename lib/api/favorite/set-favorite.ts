@@ -1,12 +1,7 @@
-import fetchData from "@lib/fetchData";
+import { apiPostResponse } from "../api-helpers";
 
 const setFavorite = async (id: number) => {
-  const response = await fetchData(`/api/v1/markers/${id}/favorites`, {
-    method: "POST",
-    credentials: "include",
-  });
-
-  return response;
+  return apiPostResponse(`/api/v1/markers/${id}/favorites`);
 };
 
 export default setFavorite;

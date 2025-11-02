@@ -1,12 +1,7 @@
-import fetchData from "@lib/fetchData";
+import { apiDelete } from "../api-helpers";
 
 const deleteMarker = async (id: number) => {
-  const response = await fetchData(`/api/v1/markers/${id}`, {
-    method: "DELETE",
-    credentials: "include",
-  });
-
-  return response;
+  return apiDelete(`/api/v1/markers/${id}`);
 };
 
 export default deleteMarker;

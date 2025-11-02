@@ -1,16 +1,9 @@
-import fetchData from "@lib/fetchData";
+import { apiDelete } from "../api-helpers";
 
 const deleteMoment = async (markerId: number, momentId: number) => {
-  const response = await fetchData(
-    `/api/v1/markers/${markerId}/stories/${momentId}`,
-    {
-      method: "DELETE",
-      credentials: "include",
-      cache: "no-store",
-    }
-  );
-
-  return response;
+  return apiDelete(`/api/v1/markers/${markerId}/stories/${momentId}`, {
+    cache: "no-store",
+  });
 };
 
 export default deleteMoment;

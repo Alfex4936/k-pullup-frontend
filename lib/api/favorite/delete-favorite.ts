@@ -1,12 +1,7 @@
-import fetchData from "@lib/fetchData";
+import { apiDelete } from "../api-helpers";
 
 const deleteFavorite = async (id: number) => {
-  const response = await fetchData(`/api/v1/markers/${id}/favorites`, {
-    method: "DELETE",
-    credentials: "include",
-  });
-
-  return response;
+  return apiDelete(`/api/v1/markers/${id}/favorites`);
 };
 
 export default deleteFavorite;
